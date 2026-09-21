@@ -58,7 +58,7 @@
         <div>
           <p class="eyebrow">Computer Science &middot; Penn State University &middot; Class of 2027</p>
           <h1>Mark Tangchaisuk</h1>
-          <p class="lede">Senior at Penn State with data engineering and analytics experience at Accenture and Business Applications Co. I build data platforms, machine learning models, and the software around them.</p>
+          <p class="lede">Senior at Penn State with data engineering and analytics experience at <strong>Accenture</strong> and <strong>Business Applications Co.</strong> I build data platforms, machine learning models, and the software around them.</p>
           <div class="hero-meta">
             <span><svg class="ico"><use href="#i-pin"/></svg>University Park, PA</span>
             <span><svg class="ico"><use href="#i-cap"/></svg>B.S. Computer Science, May 2027</span>
@@ -71,7 +71,9 @@
           </div>
         </div>
         <div class="hero-photo">
-          <img src="me.jpg" alt="Mark Tangchaisuk" width="720" height="720">
+          <div class="photo-card">
+            <img src="me.jpg" alt="Mark Tangchaisuk" width="900" height="968">
+          </div>
         </div>
       </div>
     </section>
@@ -109,6 +111,8 @@
 
         <div class="timeline">
           <article class="tl-item reveal">
+            <div class="tl-logo">A</div>
+            <div>
             <div class="tl-head">
               <div>
                 <h3>Business Analyst &amp; Data Engineer Intern</h3>
@@ -124,9 +128,12 @@
             <div class="tags">
               <span class="tag">Databricks</span><span class="tag">PySpark</span><span class="tag">SQL</span><span class="tag">Delta Lake</span><span class="tag">Azure</span><span class="tag">Data Modeling</span><span class="tag">Technical Documentation</span>
             </div>
+            </div>
           </article>
 
           <article class="tl-item reveal">
+            <div class="tl-logo warm">BA</div>
+            <div>
             <div class="tl-head">
               <div>
                 <h3>Data Scientist Intern</h3>
@@ -141,9 +148,12 @@
             <div class="tags">
               <span class="tag">Tableau</span><span class="tag">Power BI</span><span class="tag">PyTorch</span><span class="tag">Databricks</span><span class="tag">Azure</span><span class="tag">Data Pipelines</span>
             </div>
+            </div>
           </article>
 
           <article class="tl-item reveal">
+            <div class="tl-logo teal">AVT</div>
+            <div>
             <div class="tl-head">
               <div>
                 <h3>Perception Team Member</h3>
@@ -157,6 +167,7 @@
             </ul>
             <div class="tags">
               <span class="tag">ROS</span><span class="tag">Roboflow</span><span class="tag">Computer Vision</span><span class="tag">Python</span>
+            </div>
             </div>
           </article>
         </div>
@@ -183,17 +194,17 @@
         <div class="courses reveal">
           <div class="course"><code>CMPSC 473</code><span>Operating Systems</span></div>
           <div class="course"><code>CMPSC 464</code><span>Theory of Computation</span></div>
-          <div class="course"><code>CMPEN 454</code><span>Computer Vision</span></div>
+          <div class="course pen"><code>CMPEN 454</code><span>Computer Vision</span></div>
           <div class="course"><code>CMPSC 465</code><span>Design &amp; Analysis of Algorithms</span></div>
           <div class="course"><code>CMPSC 451</code><span>Numerical Computations</span></div>
           <div class="course"><code>CMPSC 311</code><span>Systems Programming</span></div>
           <div class="course"><code>CMPSC 360</code><span>Data Structures &amp; Algorithms</span></div>
-          <div class="course"><code>CMPEN 270</code><span>Digital Design</span></div>
+          <div class="course pen"><code>CMPEN 270</code><span>Digital Design</span></div>
         </div>
 
         <h3 class="subhead reveal">On campus</h3>
         <div class="campus reveal">
-          <div class="campus-card">
+          <div class="campus-card warm">
             <strong>Japanese Student Association</strong>
             <span>Event Planner</span>
             <p>Plan and run events that bring cultures together and build community on campus, handling the planning and day-of work behind each one.</p>
@@ -219,8 +230,8 @@
         <div class="projects">
           <article class="card reveal">
             <div class="cover cover-tc">
-              <svg class="cover-icon"><use href="#i-bolt"/></svg>
-              <span class="cover-title">TOP CHARGE</span>
+              <img class="cover-img" src="topcharge.png" alt="" width="512" height="512">
+              <span class="cover-title">Top Charge</span>
             </div>
             <div class="card-body">
               <div class="card-head">
@@ -245,7 +256,7 @@
 
           <article class="card reveal">
             <div class="cover cover-alure">
-              <svg class="cover-icon"><use href="#i-hanger"/></svg>
+              <span class="cover-tile"><svg class="cover-icon"><use href="#i-hanger"/></svg></span>
               <span class="cover-title">Alure</span>
             </div>
             <div class="card-body">
@@ -281,27 +292,27 @@
           </div>
         </div>
         <div class="skills reveal">
-          <div class="skill-group">
+          <div class="skill-group" data-tone="blue">
             <h4>Data &amp; Cloud</h4>
             <div class="tags"><span class="chip">Azure</span><span class="chip">Databricks</span><span class="chip">PySpark</span><span class="chip">Delta Lake</span><span class="chip">SQL</span><span class="chip">Tableau</span><span class="chip">Power BI</span></div>
           </div>
-          <div class="skill-group">
+          <div class="skill-group" data-tone="purple">
             <h4>ML &amp; Robotics</h4>
             <div class="tags"><span class="chip">PyTorch</span><span class="chip">Roboflow</span><span class="chip">ROS</span><span class="chip">Computer Vision</span></div>
           </div>
-          <div class="skill-group">
+          <div class="skill-group" data-tone="gray">
             <h4>Languages</h4>
             <div class="tags"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">Java</span><span class="chip">C</span><span class="chip">C++</span><span class="chip">Dart</span><span class="chip">HTML</span></div>
           </div>
-          <div class="skill-group">
+          <div class="skill-group" data-tone="amber">
             <h4>Web &amp; Games</h4>
             <div class="tags"><span class="chip">React</span><span class="chip">PixiJS</span><span class="chip">Node.js</span><span class="chip">Colyseus</span><span class="chip">Vitest</span><span class="chip">Playwright</span></div>
           </div>
-          <div class="skill-group">
+          <div class="skill-group" data-tone="pink">
             <h4>Mobile</h4>
             <div class="tags"><span class="chip">React Native</span><span class="chip">Expo</span><span class="chip">Flutter</span></div>
           </div>
-          <div class="skill-group">
+          <div class="skill-group" data-tone="teal">
             <h4>Tools</h4>
             <div class="tags"><span class="chip">Git</span><span class="chip">Linux</span><span class="chip">VS Code</span><span class="chip">Nginx</span></div>
           </div>
