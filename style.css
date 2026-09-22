@@ -460,18 +460,15 @@ h2 {
 .tl-logo {
   width: 56px;
   height: 56px;
+  padding: 9px;
   border-radius: 14px;
-  display: grid;
-  place-items: center;
-  font-weight: 800;
-  font-size: 15px;
-  letter-spacing: 0.02em;
-  color: #fff;
-  background: var(--grad);
-  box-shadow: 0 8px 20px rgba(47, 124, 246, 0.35);
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
 }
-.tl-logo.warm { background: var(--grad-warm); box-shadow: 0 8px 20px rgba(245, 165, 36, 0.35); }
-.tl-logo.teal { background: var(--grad-teal); box-shadow: 0 8px 20px rgba(14, 165, 164, 0.35); font-size: 13px; }
+.tl-logo.fill { padding: 0; border: 0; }
+.tl-logo img { width: 100%; height: 100%; object-fit: contain; }
 .tl-head {
   display: flex;
   justify-content: space-between;
@@ -851,7 +848,7 @@ h2 {
   .nav-links.open { display: flex; }
   .nav-links a { padding: 12px; font-size: 16px; }
   .tl-item { grid-template-columns: 1fr; gap: 14px; padding: 22px 20px; }
-  .tl-logo { width: 48px; height: 48px; border-radius: 12px; }
+  .tl-logo { width: 48px; height: 48px; padding: 7px; border-radius: 12px; }
   .date { white-space: normal; }
   .cta .btn { flex: 1 1 auto; justify-content: center; }
   .cover { height: 170px; gap: 16px; }
