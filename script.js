@@ -40,4 +40,23 @@ const reveal = new IntersectionObserver(entries => {
 
 document.querySelectorAll('.reveal').forEach(el => reveal.observe(el));
 
+// photo stack: clicking sends the front photo to the back
+const stack = document.querySelector('.photo-stack');
+if (stack) {
+  const cards = [...stack.querySelectorAll('.photo-card')];
+  const shuffle = () => {
+    cards.forEach(c => {
+      const pos = Number(c.dataset.pos);
+      c.dataset.pos = (pos + cards.length - 1) % cards.length;
+    });
+  };
+  stack.addEventListener('click', shuffle);
+  stack.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      shuffle();
+    }
+  });
+}
+
 document.getElementById('year').textContent = new Date().getFullYear();
