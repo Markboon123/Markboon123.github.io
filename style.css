@@ -301,15 +301,6 @@ svg, img { display: block; }
 .photo-card[data-pos="2"] { z-index: 1; transform: rotate(4deg) translate(12px, -8px) scale(0.94); }
 .photo-stack:hover .photo-card[data-pos="0"] { transform: rotate(0deg) translateY(-6px); }
 .photo-stack:focus-visible { outline: 2px solid var(--cyan); outline-offset: 12px; }
-.photo-hint {
-  margin: 40px 0 0;
-  text-align: center;
-  font-size: 12.5px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
-}
 
 .eyebrow {
   display: inline-flex;
@@ -824,8 +815,7 @@ h2 {
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
   .hero-photo { order: -1; width: 240px; justify-self: start; }
-  .photo-hint { text-align: left; margin-top: 18px; }
-  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
   .campus { grid-template-columns: 1fr; }
   .projects { grid-template-columns: 1fr; }
   .stats { grid-template-columns: 1fr; }
