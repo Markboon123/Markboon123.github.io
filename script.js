@@ -59,6 +59,52 @@ if (stack) {
   });
 }
 
+// courses and campus cards open a panel underneath, one at a time
+const expanders = [
+  ['.course', '.course-detail'],
+  ['.campus-card', '.campus-detail'],
+];
+
+// the panel spans the grid, so it goes after the last card sharing a row with
+// the one clicked — otherwise it cuts the row in half and leaves a hole
+const placePanel = (card, panel, cards) => {
+  let last = card;
+  for (const c of cards) {
+    if (Math.abs(c.offsetTop - card.offsetTop) < 4) last = c;
+  }
+  if (panel.previousElementSibling !== last) last.insertAdjacentElement('afterend', panel);
+};
+
+expanders.forEach(([cardSel, panelSel]) => {
+  const cards = [...document.querySelectorAll(cardSel)];
+  const panelOf = card => document.getElementById(card.getAttribute('aria-controls'));
+  cards.forEach(card => {
+    const panel = panelOf(card);
+    if (!panel) return;
+    card.addEventListener('click', () => {
+      const open = card.getAttribute('aria-expanded') === 'true';
+      cards.forEach(other => {
+        const p = panelOf(other);
+        if (!p || (other === card && !open)) return;
+        other.setAttribute('aria-expanded', 'false');
+        p.classList.remove('in');
+        p.hidden = true;
+      });
+      if (open) return;
+      card.setAttribute('aria-expanded', 'true');
+      placePanel(card, panel, cards);
+      panel.hidden = false;
+      requestAnimationFrame(() => panel.classList.add('in'));
+    });
+  });
+
+  // the row a card sits in changes with the column count
+  window.addEventListener('resize', () => {
+    const openCard = cards.find(c => c.getAttribute('aria-expanded') === 'true');
+    if (openCard) placePanel(openCard, panelOf(openCard), cards);
+  });
+});
+
 // top charge card: pressing it fires a blast across the cover, drawn the same
 // way as in the game (blue orb, fire trail, hit spark, hitstop + shake)
 const tcCover = document.querySelector('.cover-tc');

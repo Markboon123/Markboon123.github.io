@@ -559,7 +559,13 @@ h2 {
   gap: 12px;
 }
 .course {
-  padding: 14px 16px;
+  position: relative;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  padding: 14px 34px 14px 16px;
   border: 1px solid var(--border);
   border-left: 4px solid var(--accent-2);
   border-radius: 12px;
@@ -567,6 +573,7 @@ h2 {
   transition: transform 0.15s, box-shadow 0.15s;
 }
 .course.pen { border-left-color: var(--amber); }
+.course.eld { border-left-color: #0ea5a4; }
 .course:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
 .course code {
   font-family: inherit;
@@ -576,7 +583,37 @@ h2 {
   color: var(--accent);
 }
 .course.pen code { color: #b45309; }
+.course.eld code { color: #0f766e; }
 .course span { display: block; font-weight: 500; margin-top: 2px; }
+/* chevron, flipped when the course is open */
+.course::after {
+  content: "";
+  position: absolute;
+  right: 15px;
+  top: 21px;
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted);
+  transform: rotate(45deg);
+  transition: transform 0.2s;
+}
+.course[aria-expanded="true"] { box-shadow: var(--shadow); }
+.course[aria-expanded="true"]::after { transform: rotate(-135deg); top: 24px; }
+
+.course-detail {
+  grid-column: 1 / -1;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-alt);
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.course-detail.in { opacity: 1; transform: none; }
+.course-detail p { margin: 0; max-width: 78ch; }
+.course-detail .tags { margin-top: 12px; }
 
 .campus {
   display: grid;
@@ -586,12 +623,19 @@ h2 {
 .campus-card {
   position: relative;
   overflow: hidden;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
   padding: 22px 24px;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--surface);
   box-shadow: var(--shadow);
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
 }
+.campus-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); border-color: var(--accent-2); }
 .campus-card::before {
   content: "";
   position: absolute;
@@ -603,6 +647,64 @@ h2 {
 .campus-card strong { display: block; font-size: 17px; }
 .campus-card > span { display: block; color: var(--muted); font-size: 14px; margin-bottom: 8px; }
 .campus-card p { margin: 0; }
+.campus-card::after {
+  content: "";
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted);
+  transform: rotate(45deg);
+  transition: transform 0.2s;
+}
+.campus-card[aria-expanded="true"]::after { transform: rotate(-135deg); }
+
+.campus-detail {
+  grid-column: 1 / -1;
+  padding: 20px 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-alt);
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.campus-detail.in { opacity: 1; transform: none; }
+.campus-detail .btn { margin-top: 16px; }
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  align-items: start;
+  gap: 14px;
+}
+.gallery figure { margin: 0; }
+.gallery a {
+  display: block;
+  padding: 8px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+/* posters and collages, so they're shown whole rather than cropped.
+   the cap keeps a tall one from towering over the photo beside it. */
+.gallery img {
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+.gallery a:hover img { transform: scale(1.04); }
+.gallery figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.45;
+}
 
 /* projects */
 .projects {
@@ -756,6 +858,7 @@ h2 {
   .skill-group[data-tone="pink"]   { --chip-bg: rgba(244, 114, 182, 0.14); --chip-fg: #f9a8d4; --chip-border: rgba(244, 114, 182, 0.3); }
   .skill-group[data-tone="teal"]   { --chip-bg: rgba(20, 184, 166, 0.14); --chip-fg: #7de3d0; --chip-border: rgba(20, 184, 166, 0.3); }
   .course.pen code { color: #fcd38d; }
+  .course.eld code { color: #7de3d0; }
 }
 
 /* resume */
@@ -813,7 +916,8 @@ h2 {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
-  .btn, .card, .course, .tl-item, .photo-card, .cover-img, .cover-tile { transition: none; }
+  .btn, .card, .course, .tl-item, .photo-card, .cover-img, .cover-tile, .campus-card, .gallery img { transition: none; }
+  .course-detail, .campus-detail { opacity: 1; transform: none; transition: none; }
 }
 
 /* responsive */
@@ -854,4 +958,5 @@ h2 {
   .cover { height: 170px; gap: 16px; }
   .cover-title { font-size: 26px; }
   .cover-img { width: 84px; height: 84px; }
+  .gallery { grid-template-columns: 1fr; }
 }
